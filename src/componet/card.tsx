@@ -21,7 +21,7 @@ export default function Card() {
           {/* <!-- Product actions--> */}
           <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div className="text-center">
-              <a className="btn btn-outline-dark mt-auto" href="#">
+              <a className="btn btn-outline-dark mt-auto" href="/produto">
                 View options
               </a>
             </div>

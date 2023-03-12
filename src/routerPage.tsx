@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./page/home"
+import Product from "./page/product"
 
 export default function RouterPage() {
   // const auth = useContext(AuthContext)
@@ -27,6 +28,7 @@ export default function RouterPage() {
       <Route path="*" element={<Home />} />
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/produto" element={<Product />} />
     </Routes>
   )
 }
