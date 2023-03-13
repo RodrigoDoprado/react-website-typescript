@@ -7,6 +7,7 @@ import Register from "./page/auth/register"
 import Cart from "./page/cart"
 import Home from "./page/home"
 import Product from "./page/product"
+import MyDados from "./page/user/mydados"
 
 export default function RouterPage() {
   const auth = useContext(AuthContext)
@@ -33,6 +34,14 @@ export default function RouterPage() {
         element={
           <Private>
             <Cart />
+          </Private>
+        }
+      />
+      <Route
+        path="/meudados"
+        element={
+          <Private>
+            <MyDados />
           </Private>
         }
       />

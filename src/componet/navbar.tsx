@@ -1,4 +1,15 @@
+/* eslint-disable no-self-assign */
+import { useContext } from "react"
+import { AuthContext } from "../contexts/AuthContexts"
+
 export default function Navbar() {
+  const auth = useContext(AuthContext)
+
+  const handleLogout = async () => {
+    await auth.signout()
+    window.location.href = window.location.href
+  }
+
   return (
     <>
       {/* <!-- Navigation--> */}
@@ -25,11 +36,6 @@ export default function Navbar() {
                   Home
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#!">
-                  About
-                </a>
-              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
@@ -39,12 +45,12 @@ export default function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Shop
+                  Items
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                     <a className="dropdown-item" href="#!">
-                      All Products
+                      Todos Items
                     </a>
                   </li>
                   <li>
@@ -52,15 +58,20 @@ export default function Navbar() {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#!">
-                      Popular Items
+                      Items Populares
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#!">
-                      New Arrivals
+                      Novos Items
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="#!">
+                  Quem Somos
+                </a>
               </li>
             </ul>
             <form className="d-flex">
@@ -73,54 +84,60 @@ export default function Navbar() {
               </a>
             </form>
             <ul className="navbar-nav  mb-lg-0 ms-lg-4">
-              <li className="nav-item">
-                <a className="nav-link" href="/auth/login">
-                  Sigin in
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/auth/register">
-                  Sigin up
-                </a>
-              </li>
-              {/* <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    id="navbarDropdown"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Shop
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="#!">
-                        All Products
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#!">
-                        Popular Items
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#!">
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </li> */}
+              {!auth.user ? (
+                <>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/login">
+                      Sigin in
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/register">
+                      Sigin up
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      id="navbarDropdown"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Shop
+                    </a>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="navbarDropdown"
+                    >
+                      <li>
+                        <a className="dropdown-item" href="/meudados">
+                          Configuração
+                        </a>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <a
+                          href="/"
+                          className="dropdown-item"
+                          onClick={handleLogout}
+                        >
+                          {/* <span className="icons">
+                  <BsBoxArrowDown className="icon" />
+                </span> */}
+                          <span className="title">Sign Out</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

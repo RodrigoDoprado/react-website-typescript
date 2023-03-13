@@ -22,14 +22,16 @@ export default function ForgotPassword() {
                     </p>
                     <form>
                       <div className="form-outline form-dark mb-4">
-                        <input
-                          type="email"
-                          id="typeEmailX"
-                          className="form-control form-control-lg"
-                        />
-                        <label className="form-label" htmlFor="typeEmailX">
+                        {/* <label className="form-label" htmlFor="typeEmailX">
                           Email
-                        </label>
+                        </label> */}
+                        <input
+                          className="form-control form-control-lg"
+                          type="email"
+                          name="email"
+                          placeholder="Email"
+                          required
+                        />
                       </div>
 
                       <button

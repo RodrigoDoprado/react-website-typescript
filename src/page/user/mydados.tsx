@@ -2,7 +2,7 @@ import Footer from "../../componet/footer"
 import Form from "../../componet/userForm"
 import Navbar from "../../componet/navbar"
 
-export default function Login() {
+export default function MyDados() {
   return (
     <>
       <Navbar />

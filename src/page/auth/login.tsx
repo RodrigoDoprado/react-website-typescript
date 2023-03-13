@@ -1,7 +1,39 @@
+/* eslint-disable no-self-assign */
+import { useState, ChangeEvent, useContext } from "react"
 import Footer from "../../componet/footer"
 import Navbar from "../../componet/navbar"
+import { AuthContext } from "../../contexts/AuthContexts"
 
 export default function Login() {
+  const auth = useContext(AuthContext)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [status, setStatus] = useState({ type: "", message: "" })
+
+  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value)
+  }
+
+  const handleLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    if (!email || !password) {
+      alert("Prencha todos os Campos!")
+    } else {
+      await auth
+        .signin(email, password)
+        .then(() => {
+          window.location.href = window.location.href
+        })
+        .catch(() => {
+          setStatus({ type: "error", message: "E-mail ou Senha Inválido!" })
+        })
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -15,29 +47,39 @@ export default function Login() {
                   <div className="mb-md-5 mt-md-4 pb-5">
                     <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                     <p className="text-dark-50 mb-5">
-                      Please enter your login and password!
+                      Entre com seu login e Senha!
                     </p>
-                    <form>
+                    {status.type === "success" ? (
+                      <p style={{ color: "green" }}>{status.message}</p>
+                    ) : (
+                      ""
+                    )}
+                    {status.type === "error" ? (
+                      <p style={{ color: "#ff0000" }}>{status.message}</p>
+                    ) : (
+                      ""
+                    )}
+                    <form onSubmit={handleLogin}>
                       <div className="form-outline form-dark mb-4">
                         <input
-                          type="email"
-                          id="typeEmailX"
                           className="form-control form-control-lg"
+                          type="email"
+                          name="email"
+                          placeholder="Email"
+                          required
+                          onChange={handleEmailInput}
                         />
-                        <label className="form-label" htmlFor="typeEmailX">
-                          Email
-                        </label>
                       </div>
 
                       <div className="form-outline form-dark mb-4">
                         <input
-                          type="password"
-                          id="typePasswordX"
                           className="form-control form-control-lg"
+                          type="password"
+                          name="password"
+                          placeholder="Senha"
+                          required
+                          onChange={handlePasswordInput}
                         />
-                        <label className="form-label" htmlFor="typePasswordX">
-                          Password
-                        </label>
                       </div>
 
                       <button
@@ -67,7 +109,7 @@ export default function Login() {
 
                   <div>
                     <p className="mb-0">
-                      Don't have an account?{" "}
+                      Vamos criar uma conta agora?
                       <a href="/auth/register" className="text-dark-50 fw-bold">
                         Sign Up
                       </a>
