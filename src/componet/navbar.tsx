@@ -64,13 +64,13 @@ export default function Navbar() {
               </li>
             </ul>
             <form className="d-flex">
-              <button className="btn btn-outline-dark" type="submit">
+              <a className="btn btn-outline-dark" href="/meucarrinho">
                 <i className="bi-cart-fill me-1"></i>
                 Cart
                 <span className="badge bg-dark text-white ms-1 rounded-pill">
                   0
                 </span>
-              </button>
+              </a>
             </form>
             <ul className="navbar-nav  mb-lg-0 ms-lg-4">
               <li className="nav-item">

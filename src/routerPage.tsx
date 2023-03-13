@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import ForgotPassword from "./page/auth/forgotPassword"
 import Login from "./page/auth/login"
 import Register from "./page/auth/register"
+import Cart from "./page/cart"
 import Home from "./page/home"
 import Product from "./page/product"
 
@@ -25,6 +26,7 @@ export default function RouterPage() {
   return (
     <Routes>
       {/* rota Privada */}
+      <Route path="/meucarrinho" element={<Cart />} />
 
       {/* rota public */}
       <Route path="*" element={<Home />} />
