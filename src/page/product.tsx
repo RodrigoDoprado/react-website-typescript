@@ -38,13 +38,13 @@ export default function Product() {
                   value="1"
                 />
                 {/*style="max-width: 3rem" */}
-                <button
+                <a
                   className="btn btn-outline-dark flex-shrink-0"
-                  type="button"
+                  href="/meucarrinho"
                 >
                   <i className="bi-cart-fill me-1"></i>
                   Add to cart
-                </button>
+                </a>
               </div>
             </div>
           </div>
