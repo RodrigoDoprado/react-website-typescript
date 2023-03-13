@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet"
 import Footer from "../../componet/footer"
 import Navbar from "../../componet/navbar"
 
 export default function ForgotPassword() {
   return (
     <>
+      <Helmet>
+        <title>Forgot Password</title>
+      </Helmet>
       <Navbar />
       <section className="py-5">
         <div className="container">
@@ -14,11 +18,10 @@ export default function ForgotPassword() {
                 <div className="card-body p-5 text-center">
                   <div className="mb-md-5 mt-md-4 pb-5">
                     <h2 className="fw-bold mb-2 text-uppercase">
-                      {" "}
                       Forgot Password
                     </h2>
                     <p className="text-dark-50 mb-5">
-                      Please enter your login and password!
+                      Prencha o campo com seu email!
                     </p>
                     <form>
                       <div className="form-outline form-dark mb-4">

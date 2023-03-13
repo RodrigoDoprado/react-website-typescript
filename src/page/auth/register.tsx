@@ -5,6 +5,9 @@ import Navbar from "../../componet/navbar"
 export default function Login() {
   return (
     <>
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <Navbar />
       <section className="py-5">
         <div className="container">

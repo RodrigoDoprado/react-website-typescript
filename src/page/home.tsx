@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet"
 import Card from "../componet/card"
 import Footer from "../componet/footer"
 import Navbar from "../componet/navbar"
@@ -5,6 +6,9 @@ import Navbar from "../componet/navbar"
 export default function Home() {
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Navbar />
       {/* <!-- Header--> */}
       <header className="bg-dark py-5">

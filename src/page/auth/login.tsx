@@ -1,5 +1,6 @@
 /* eslint-disable no-self-assign */
 import { useState, ChangeEvent, useContext } from "react"
+import { Helmet } from "react-helmet"
 import Footer from "../../componet/footer"
 import Navbar from "../../componet/navbar"
 import { AuthContext } from "../../contexts/AuthContexts"
@@ -36,6 +37,9 @@ export default function Login() {
 
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <Navbar />
       <section className="py-5">
         <div className="container">
