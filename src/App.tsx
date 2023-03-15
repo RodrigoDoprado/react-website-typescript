@@ -6,23 +6,21 @@ import RouterPage from "./routerPage"
 
 function App() {
   const { loading } = useContext(AuthContext)
-  return (
-    <>
-      {!loading ? (
-        <>
-          <Navbar />
-          <RouterPage />
-          <Footer />
-        </>
-      ) : (
-        <>
-          <Navbar />
-          <RouterPage />
-          <Footer />
-        </>
-      )}
-    </>
-  )
+  if (!loading) {
+    return (
+      <>
+        <Navbar />
+        <RouterPage />
+        <Footer />
+      </>
+    )
+  } else {
+    return (
+      <>
+        <h1></h1>
+      </>
+    )
+  }
 }
 
 export default App
