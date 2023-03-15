@@ -9,14 +9,14 @@ function App() {
   if (loading) {
     return (
       <>
-        <Navbar />
-        <RouterPage />
-        <Footer />
       </>
     )
   } else {
     return (
       <>
+<Navbar />
+        <RouterPage />
+        <Footer />
       </>
     )
   }
