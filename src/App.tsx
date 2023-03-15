@@ -15,7 +15,11 @@ function App() {
           <Footer />
         </>
       ) : (
-        <></>
+        <>
+          <Navbar />
+          <RouterPage />
+          <Footer />
+        </>
       )}
     </>
   )
