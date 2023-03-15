@@ -5,8 +5,9 @@ import { AuthContext } from "./contexts/AuthContexts"
 import RouterPage from "./routerPage"
 
 function App() {
-  const { loading } = useContext(AuthContext)
+  const {authenticated, loading } = useContext(AuthContext)
   if (!loading) {
+if(!authenticated){
     return (
       <>
         <Navbar />
@@ -14,6 +15,15 @@ function App() {
         <Footer />
       </>
     )
+}eles{
+return (
+      <>
+        <Navbar />
+        <RouterPage />
+        <Footer />
+      </>
+    )
+}
   } else {
     return (
       <>
