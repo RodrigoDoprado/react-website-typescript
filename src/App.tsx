@@ -6,7 +6,7 @@ import RouterPage from "./routerPage"
 
 function App() {
   const { loading } = useContext(AuthContext)
-  if (!loading) {
+  if (loading) {
     return (
       <>
         <Navbar />
@@ -17,9 +17,6 @@ function App() {
   } else {
     return (
       <>
-        <Navbar />
-        <RouterPage />
-        <Footer />
       </>
     )
   }
