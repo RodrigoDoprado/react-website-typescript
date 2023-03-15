@@ -6,7 +6,7 @@ import RouterPage from "./routerPage"
 
 function App() {
   const { loading } = useContext(AuthContext)
-  if (loading) {
+  if (!loading) {
     return (
       <>
       </>
