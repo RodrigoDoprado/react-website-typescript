@@ -8,6 +8,7 @@ export const PagePrivate = ({ children }: { children: JSX.Element }) => {
   // if (loading) {
   //   return <></>
   // }
+
   if (!authenticated) {
     return <Login />
   }
