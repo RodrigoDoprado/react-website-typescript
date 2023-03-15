@@ -1,6 +1,5 @@
-import Footer from "../../componet/footer"
 import Form from "../../componet/userForm"
-import Navbar from "../../componet/navbar"
+import { Helmet } from "react-helmet"
 
 export default function Login() {
   return (
@@ -8,7 +7,6 @@ export default function Login() {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <Navbar />
       <section className="py-5">
         <div className="container">
           <div className="row justify-content-center">
@@ -18,7 +16,6 @@ export default function Login() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   )
 }

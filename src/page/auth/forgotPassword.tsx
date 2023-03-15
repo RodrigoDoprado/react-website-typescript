@@ -1,6 +1,4 @@
 import { Helmet } from "react-helmet"
-import Footer from "../../componet/footer"
-import Navbar from "../../componet/navbar"
 
 export default function ForgotPassword() {
   return (
@@ -8,7 +6,6 @@ export default function ForgotPassword() {
       <Helmet>
         <title>Forgot Password</title>
       </Helmet>
-      <Navbar />
       <section className="py-5">
         <div className="container">
           <div className="row justify-content-center">
@@ -51,7 +48,6 @@ export default function ForgotPassword() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   )
 }

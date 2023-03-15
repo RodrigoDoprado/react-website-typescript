@@ -1,6 +1,6 @@
-import { useContext } from "react"
 import { Route, Routes } from "react-router-dom"
-import { AuthContext } from "./contexts/AuthContexts"
+import { PagePrivate } from "./contexts/PagePrivate"
+import { PagePublic } from "./contexts/PagePublic"
 import ForgotPassword from "./page/auth/forgotPassword"
 import Login from "./page/auth/login"
 import Register from "./page/auth/register"
@@ -10,39 +10,23 @@ import Product from "./page/product"
 import MyDados from "./page/user/mydados"
 
 export default function RouterPage() {
-  const auth = useContext(AuthContext)
-
-  const Private = ({ children }: { children: JSX.Element }) => {
-    if (!auth.user) {
-      return <Login />
-    }
-    return children
-  }
-
-  const Notprivate = ({ children }: { children: JSX.Element }) => {
-    if (auth.user) {
-      return <Home />
-    }
-    return children
-  }
-
   return (
     <Routes>
       {/* rota Privada */}
       <Route
         path="/meucarrinho"
         element={
-          <Private>
+          <PagePrivate>
             <Cart />
-          </Private>
+          </PagePrivate>
         }
       />
       <Route
         path="/meudados"
         element={
-          <Private>
+          <PagePrivate>
             <MyDados />
-          </Private>
+          </PagePrivate>
         }
       />
 
@@ -54,25 +38,25 @@ export default function RouterPage() {
       <Route
         path="/auth/login"
         element={
-          <Notprivate>
+          <PagePublic>
             <Login />
-          </Notprivate>
+          </PagePublic>
         }
       />
       <Route
         path="/auth/register"
         element={
-          <Notprivate>
+          <PagePublic>
             <Register />
-          </Notprivate>
+          </PagePublic>
         }
       />
       <Route
         path="/auth/forgotpassword"
         element={
-          <Notprivate>
+          <PagePublic>
             <ForgotPassword />
-          </Notprivate>
+          </PagePublic>
         }
       />
     </Routes>

@@ -3,6 +3,8 @@ import { createContext } from "react"
 import { User } from "../types/User"
 
 export type AuthContextType = {
+  authenticated: boolean
+  loading: boolean
   user: User | null
   signin: (email: string, password: string) => Promise<void>
   signout: () => void

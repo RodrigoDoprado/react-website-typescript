@@ -5,7 +5,7 @@ import { AuthContext } from "./AuthContexts"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null)
-  const api = useApi()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     validateToken()
@@ -23,21 +23,24 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           alert("Session Expirou!")
           signout()
         })
+      setLoading(false)
     }
   }
 
   const signin = async (email: string, password: string) => {
-    await api.signin(email, password).then((data) => {
-      // setUser(data.user);
-      setToken(data.token)
-    })
+    await useApi()
+      .signin(email, password)
+      .then((data) => {
+        // setUser(data.user);
+        setToken(data.token)
+      })
   }
 
   const signout = async () => {
     // console.log("signout está sendo executada.")
     setUser(null)
     setToken("")
-    await api.logout()
+    await useApi().logout()
   }
 
   const setToken = (token: string) => {
@@ -45,7 +48,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, signin, signout }}>
+    <AuthContext.Provider
+      value={{ authenticated: !!user, user, loading, signin, signout }}
+    >
       {children}
     </AuthContext.Provider>
   )
