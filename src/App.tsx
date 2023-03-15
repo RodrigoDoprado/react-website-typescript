@@ -17,7 +17,9 @@ function App() {
   } else {
     return (
       <>
-        <h1></h1>
+        <Navbar />
+        <RouterPage />
+        <Footer />
       </>
     )
   }
