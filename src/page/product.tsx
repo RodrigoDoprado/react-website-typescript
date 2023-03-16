@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet"
 import Card from "../componet/card"
+import Footer from "../componet/footer"
+import Navbar from "../componet/navbar"
 
 export default function Product() {
   return (
@@ -7,6 +9,7 @@ export default function Product() {
       <Helmet>
         <title>Produto</title>
       </Helmet>
+      <Navbar />
       {/* <!-- Product section--> */}
       <section className="py-5">
         <div className="container px-4 px-lg-5 my-5">
@@ -60,6 +63,7 @@ export default function Product() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   )
 }

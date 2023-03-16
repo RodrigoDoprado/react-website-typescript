@@ -1,5 +1,7 @@
 import Form from "../../componet/userForm"
 import { Helmet } from "react-helmet"
+import Navbar from "../../componet/navbar"
+import Footer from "../../componet/footer"
 
 export default function MyDados() {
   return (
@@ -7,6 +9,7 @@ export default function MyDados() {
       <Helmet>
         <title>Meus Dados</title>
       </Helmet>
+      <Navbar />
       <section className="py-5">
         <div className="container">
           <div className="row justify-content-center">
@@ -16,6 +19,7 @@ export default function MyDados() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   )
 }

@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }, [])
 
   const validateToken = async () => {
-    const storageData = localStorage.getItem("authToken")
+    const storageData = localStorage.getItem("userToken")
     if (storageData) {
       await useApi()
         .getUser(storageData)
@@ -23,8 +23,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           alert("Session Expirou!")
           signout()
         })
-      setLoading(false)
     }
+    setLoading(false)
   }
 
   const signin = async (email: string, password: string) => {
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }
 
   const setToken = (token: string) => {
-    localStorage.setItem("authToken", token)
+    localStorage.setItem("userToken", token)
   }
 
   return (

@@ -1,6 +1,8 @@
 /* eslint-disable no-self-assign */
 import { useState, ChangeEvent, useContext } from "react"
 import { Helmet } from "react-helmet"
+import Footer from "../../componet/footer"
+import Navbar from "../../componet/navbar"
 import { AuthContext } from "../../contexts/AuthContexts"
 
 export default function Login() {
@@ -38,6 +40,7 @@ export default function Login() {
       <Helmet>
         <title>Login</title>
       </Helmet>
+      <Navbar />
       <section className="py-5">
         <div className="container">
           <div className="row justify-content-center">
@@ -122,6 +125,7 @@ export default function Login() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   )
 }
