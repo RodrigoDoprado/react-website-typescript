@@ -131,7 +131,7 @@ export default function Navbar() {
                           {/* <span className="icons">
                   <BsBoxArrowDown className="icon" />
                 </span> */}
-                          <span className="title">Sign Out</span>
+                          <span className="title">Logout</span>
                         </a>
                       </li>
                     </ul>
