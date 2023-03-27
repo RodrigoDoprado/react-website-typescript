@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { useApi } from "../services/api"
-import { User } from "../types/User"
-import { AuthContext } from "./AuthContexts"
+import { useApi } from "../service/api"
+import { User } from "../type/User"
+import { AuthContext } from "./AuthContext"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null)

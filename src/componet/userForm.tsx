@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useState } from "react"
-import { AuthContext } from "../contexts/AuthContexts"
-import { useApi } from "../services/api"
+import { AuthContext } from "../context/AuthContext"
+import { useApi } from "../service/api"
 
 export default function UserForm() {
   const { user } = useContext(AuthContext)
@@ -39,10 +39,11 @@ export default function UserForm() {
       .then((response: { data: { message: any } }) => {
         setStatus({ type: "success", message: response.data.message })
       })
-      .catch((err: { response: { data: { message: any } } }) => {
-        if (err.response) {
-          setStatus({ type: "error", message: err.response.data.message })
-        }
+      .catch(() => {
+        setStatus({
+          type: "error",
+          message: "Atualização não realizada, Tente mais tarde!",
+        })
       })
   }
 

@@ -15,14 +15,14 @@ export const useApi = () => ({
     return response.data
   },
   updateUser: async (data: any, id: any) => {
-    const response = await api.post(`/account/up/${id}`, data)
+    const response = await api.put(`/account/up/${id}`, data)
     return response.data
   },
-  avatarUser: async (data: any) => {
+  avatarUser: async (data: any, id: any) => {
     const formData = new FormData()
     formData.append("file", data)
 
-    const response = await api.post("/account/avatar", formData, {
+    const response = await api.put(`/account/avatar/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -41,6 +41,14 @@ export const useApi = () => ({
   },
   logout: async () => {
     const response = await api.post("/account/logout")
+    return response.data
+  },
+  allPrduct: async () => {
+    const response = await api.get("/store/product/allProduct")
+    return response
+  },
+  getPrduct: async (id: any) => {
+    const response = await api.get("/store/product/getProduct", id)
     return response.data
   },
 })

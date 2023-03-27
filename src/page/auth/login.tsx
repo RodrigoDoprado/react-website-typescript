@@ -3,7 +3,7 @@ import { useState, ChangeEvent, useContext } from "react"
 import { Helmet } from "react-helmet"
 import Footer from "../../componet/footer"
 import Navbar from "../../componet/navbar"
-import { AuthContext } from "../../contexts/AuthContexts"
+import { AuthContext } from "../../context/AuthContext"
 
 export default function Login() {
   const auth = useContext(AuthContext)
@@ -111,14 +111,14 @@ export default function Login() {
                     </div>
                   </div>
 
-                  <div>
+                  {/* <div>
                     <p className="mb-0">
                       Vamos criar uma conta agora?
                       <a href="/auth/register" className="text-dark-50 fw-bold">
                         Sign Up
                       </a>
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

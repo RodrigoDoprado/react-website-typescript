@@ -1,6 +1,6 @@
 /* eslint-disable no-self-assign */
 import { useContext } from "react"
-import { AuthContext } from "../contexts/AuthContexts"
+import { AuthContext } from "../context/AuthContext"
 
 export default function Navbar() {
   const auth = useContext(AuthContext)

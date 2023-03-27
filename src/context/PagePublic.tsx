@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import Home from "../page/home"
 import Loading from "../page/loading"
-import { AuthContext } from "./AuthContexts"
+import { AuthContext } from "./AuthContext"
 
 export const PagePublic = ({ children }: { children: JSX.Element }) => {
   const { authenticated, loading } = useContext(AuthContext)
