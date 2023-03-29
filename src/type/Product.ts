@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type Product = {
-  id: string
+  id: any
   imageUrl: string
   title: string
   caption: string

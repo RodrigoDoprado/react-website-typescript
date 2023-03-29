@@ -9,21 +9,31 @@ import { useApi } from "../service/api"
 import { Product } from "../type/Product"
 
 export default function ViewProduct() {
+  const initialState = {
+    title: "",
+    caption: "",
+    category: "",
+    id: "",
+    imageUrl: "",
+  }
   const [data, setData] = useState<Product[]>([])
-  const [dataProduct, setDataProduct] = useState()
+  const [dataProduct, setDataProduct] = useState(initialState)
+  const { title, caption, category, imageUrl } = dataProduct
   const [status, setStatus] = useState({ type: "", message: "" })
   const { id } = useParams()
 
   useEffect(() => {
-    allProduct()
-    getProduct(id)
+    all()
+    if (id) {
+      get(id)
+    }
   }, [])
 
-  const allProduct = async () => {
+  const all = async () => {
     useApi()
-      .allPrduct()
+      .allPrductRelated(category)
       .then((res) => {
-        setData(res.data.product)
+        setData(res.data.products)
       })
       .catch((err: { response: { data: { message: any } } }) => {
         if (err.response) {
@@ -37,12 +47,11 @@ export default function ViewProduct() {
       })
   }
 
-  const getProduct = async (id: string | undefined) => {
+  const get = async (id: string | undefined) => {
     useApi()
-      .getPrduct(id)
+      .getProduct(id)
       .then((res) => {
-        setDataProduct(res.product.product)
-        // console.log(res)
+        setDataProduct(res.product)
       })
       .catch((err: { response: { data: { message: any } } }) => {
         if (err.response) {
@@ -59,7 +68,9 @@ export default function ViewProduct() {
   return (
     <>
       <Helmet>
-        <title>{dataProduct}</title>
+        <title>
+          {title}-{caption}
+        </title>
       </Helmet>
       <Navbar />
       {/* <!-- Product section--> */}
@@ -69,13 +80,15 @@ export default function ViewProduct() {
             <div className="col-md-6">
               <img
                 className="card-img-top mb-5 mb-md-0"
-                src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"
-                alt="..."
+                src={imageUrl}
+                alt={caption}
               />
             </div>
             <div className="col-md-6">
               {/* <div className="small mb-1">SKU: BST-498</div> */}
-              <h1 className="display-5 fw-bolder">Shop item template</h1>
+              <h1 className="fw-bolder">{title}</h1>
+              <h5 className="fw-bolder">{caption}</h5>
+              <h6 className="fw-bolder">{category}</h6>
               <div className="fs-5 mb-5">
                 {/* <span className="text-decoration-line-through">$45.00</span>
                 <span>$40.00</span> */}
@@ -109,8 +122,8 @@ export default function ViewProduct() {
       {/* <!-- Related items section--> */}
       <section className="py-5 bg-light">
         <div className="container px-4 px-lg-5 mt-5">
-          <h2 className="fw-bolder mb-4">Related products</h2>
-          <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <h2 className="fw-bolder mb-4">Produtos Relacionados</h2>
+          <div className="row gx-lg-9 row-cols-3 row-cols-md-3 row-cols-xl-6 justify-content">
             {status.type === "success" ? (
               <p style={{ color: "green" }}>{status.message}</p>
             ) : (

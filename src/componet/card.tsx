@@ -10,7 +10,7 @@ type cardProps = {
 export default function Card(props: cardProps) {
   return (
     <div className="col mb-5">
-      <div className="card h-100">
+      <div className="card">
         <a href={`/produto/${props.id}`}>
           {/* <!-- Product image--> */}
           <img

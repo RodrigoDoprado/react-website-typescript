@@ -15,7 +15,7 @@ export default function Home() {
     useApi()
       .allPrduct()
       .then((res) => {
-        setData(res.data.product)
+        setData(res.data.products)
       })
       .catch((err: { response: { data: { message: any } } }) => {
         if (err.response) {
@@ -48,8 +48,8 @@ export default function Home() {
       </header>
       {/* <!-- Section--> */}
       <section className="py-5">
-        <div className="container px-4 px-lg-5 mt-5">
-          <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div className="container px-4 px-lg-5">
+          <div className="row gx-lg-9 row-cols-3 row-cols-md-3 row-cols-xl-6 justify-content">
             {status.type === "success" ? (
               <p style={{ color: "green" }}>{status.message}</p>
             ) : (

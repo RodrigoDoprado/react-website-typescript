@@ -3,6 +3,7 @@ import { PagePrivate } from "./context/PagePrivate"
 import { PagePublic } from "./context/PagePublic"
 import ForgotPassword from "./page/auth/forgotPassword"
 import Login from "./page/auth/login"
+import Register from "./page/auth/register"
 import Cart from "./page/cart"
 import Home from "./page/home"
 import MyDados from "./page/user/mydados"
@@ -42,14 +43,14 @@ export default function RouterPage() {
           </PagePublic>
         }
       />
-      {/* <Route
+      <Route
         path="/auth/register"
         element={
           <PagePublic>
             <Register />
           </PagePublic>
         }
-      /> */}
+      />
       <Route
         path="/auth/forgotpassword"
         element={

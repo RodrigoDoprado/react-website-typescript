@@ -45,17 +45,45 @@ export default function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Items
+                  Filmes
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                     <a className="dropdown-item" href="#!">
-                      Todos Items
+                      Filmes Populares
+                    </a>
+                  </li>
+                  <li>{/* <hr className="dropdown-divider" /> */}</li>
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Items Populares
                     </a>
                   </li>
                   <li>
-                    <hr className="dropdown-divider" />
+                    <a className="dropdown-item" href="#!">
+                      Novos Items
+                    </a>
                   </li>
+                </ul>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Series
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Series Populares
+                    </a>
+                  </li>
+                  <li>{/* <hr className="dropdown-divider" /> */}</li>
                   <li>
                     <a className="dropdown-item" href="#!">
                       Items Populares
@@ -84,16 +112,16 @@ export default function Navbar() {
               </a>
             </form>
             <ul className="navbar-nav  mb-lg-0 ms-lg-4">
-              {!auth.user ? (
+              {!auth.user && !auth.loading ? (
                 <>
                   <li className="nav-item">
                     <a className="nav-link" href="/auth/login">
-                      Sigin in
+                      Login
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="/auth/register">
-                      Sigin up
+                      Registra
                     </a>
                   </li>
                 </>

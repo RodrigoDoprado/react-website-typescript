@@ -47,8 +47,14 @@ export const useApi = () => ({
     const response = await api.get("/store/product/allProduct")
     return response
   },
-  getPrduct: async (id: any) => {
-    const response = await api.get("/store/product/getProduct", id)
+  allPrductRelated: async (category: any) => {
+    const response = await api.get(
+      `/store/product/getProductRelated/${category}`
+    )
+    return response.data
+  },
+  getProduct: async (id: any) => {
+    const response = await api.get(`/store/product/getProduct/${id}`)
     return response.data
   },
 })
