@@ -1,25 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import RouterPage from "../routerPage"
 import { useApi } from "../service/api"
 import Page404 from "./page404"
 
 export default function Index() {
-  // const [data, setData] = useState<Product[]>([])
+  const [page, setPage] = useState("")
 
   useEffect(() => {
-    allProduct()
-  }, [])
-
-  const allProduct = () => {
     useApi()
       .allPrduct()
       .then(() => {
-        return <RouterPage />
+        setPage("RouterPage")
       })
       .catch(() => {
-        return <Page404 />
+        setPage("Page404")
       })
-  }
-  return <></>
+  }, [])
+
+  return <> {page === "RouterPage" ? <RouterPage /> : <Page404 />}</>
 }
