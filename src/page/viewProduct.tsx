@@ -2,11 +2,9 @@
 import { useState, useEffect } from "react"
 import { Helmet } from "react-helmet"
 import { useParams } from "react-router-dom"
-import Card from "../componet/card"
 import Footer from "../componet/footer"
 import Navbar from "../componet/navbar"
 import { useApi } from "../service/api"
-import { Product } from "../type/Product"
 
 export default function ViewProduct() {
   const initialState = {
@@ -16,7 +14,7 @@ export default function ViewProduct() {
     id: "",
     imageUrl: "",
   }
-  const [data, setData] = useState<Product[]>([])
+//   const [data, setData] = useState<Product[]>([])
   const [dataProduct, setDataProduct] = useState(initialState)
   const { title, caption, category, imageUrl } = dataProduct
   const [status, setStatus] = useState({ type: "", message: "" })
@@ -32,8 +30,8 @@ export default function ViewProduct() {
   const all = async () => {
     useApi()
       .allPrductRelated(category)
-      .then((res) => {
-        setData(res.data.products)
+      .then(() => {
+        // setData(res.data.products)
       })
       .catch((err: { response: { data: { message: any } } }) => {
         if (err.response) {
@@ -134,8 +132,7 @@ export default function ViewProduct() {
             ) : (
               ""
             )}
-            {data &&
-              data.map((item) => {
+            {/* {data.map((item) => {
                 return (
                   <Card
                     title={item.title}
@@ -145,7 +142,7 @@ export default function ViewProduct() {
                     caption={item.caption}
                   />
                 )
-              })}
+              })} */}
           </div>
         </div>
       </section>

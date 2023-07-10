@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useApi } from "../service/api"
-import { User } from "../type/User"
+import { User } from "../interface/UserData"
 import { AuthContext } from "./AuthContext"
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {

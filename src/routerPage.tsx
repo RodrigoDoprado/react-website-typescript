@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { PagePrivate } from "./context/PagePrivate"
 import { PagePublic } from "./context/PagePublic"
 import ForgotPassword from "./page/auth/forgotPassword"
@@ -8,9 +8,12 @@ import Cart from "./page/cart"
 import Home from "./page/home"
 import MyDados from "./page/user/mydados"
 import ViewProduct from "./page/viewProduct"
+import { AuthProvider } from "./context/AuthProvider"
 
 export default function RouterPage() {
   return (
+    <AuthProvider>
+      <BrowserRouter>
     <Routes>
       {/* rota Privada */}
       <Route
@@ -60,5 +63,7 @@ export default function RouterPage() {
         }
       />
     </Routes>
+    </BrowserRouter>
+    </AuthProvider>
   )
 }

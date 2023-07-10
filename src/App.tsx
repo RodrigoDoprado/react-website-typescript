@@ -1,7 +1,8 @@
-import Index from "./page"
+import RouterPage from "./routerPage"
+
 
 function App() {
-  return <Index />
+  return <RouterPage />
 }
 
 export default App
